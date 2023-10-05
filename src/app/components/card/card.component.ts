@@ -22,7 +22,7 @@ export class CardComponent implements OnInit{
         next: (resp) => {
           console.log(resp.id)
           console.log(resp.name)
-          console.log(resp.sprites.front_default)
+          console.log(resp.sprites.other.dream_world.front_default)
           console.log(resp.types)
         },
         error: (err) => console.log(err)
