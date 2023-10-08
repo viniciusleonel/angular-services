@@ -10,7 +10,6 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 export class CardComponent implements OnInit{
   pokemon:PokemonData
 
-  estilo:string = ""
   estiloType:string = ""
 
   constructor (
@@ -19,55 +18,52 @@ export class CardComponent implements OnInit{
     this.pokemon = {
       id:0,
       name:'',
-      sprites:{front_default:''},
+      sprites: {
+        other: {
+            dream_world: {
+                front_default: ''
+            }
+        }
+    },
       types:[]
     }
   }
 
   ngOnInit(): void {
-    this.getPokemon('pikachu')
+    this.getPokemon('charizard')
   }
 
   chooseClass(){
-    if (this.estiloType === 'fire' ){
-      this.estilo = 'fire'
-    } else { 
-      this.estilo = 'normal'
-    }
-
-    return this.estilo
+    return this.estiloType
 
   }
 
   getPokemon(searchName:string){
-    this.service.getPokemon(searchName).subscribe(
-      {
-        next: (resp) => {
-          
-          this.pokemon = {
-            id:resp.id,
-            name:resp.name,
-            sprites: resp.sprites,
-            types:resp.types,
-          }
-          
-        },
-        error: (err) => console.log("not found"),
-        
+    this.service.getPokemon(searchName).subscribe({
+      next: (resp) => {
+        this.pokemon = {
+          id: resp.id,
+          name: resp.name,
+          sprites: resp.sprites,
+          types: resp.types
+        };
 
-      }
-    )
-    
+        // Verifique se há pelo menos um tipo
+        if (this.pokemon.types.length > 0) {
+          // Extrair o nome do primeiro tipo
+          this.estiloType = this.pokemon.types[0].type.name;
+          console.log('O primeiro tipo é:', this.estiloType);
+        } else {
+          this.estiloType = "normal";
+        }
+      },
+      error: () => console.log("not found"),
+    });
   }
 
-  pickClass(){
-    // this.service.getPokemon("charizard").subscribe(
-    //   this.estiloType = this.pokemon.types.map((type:{name}))
-
-    // )
-    
+  getPokemonTypeClasses(): string[] {
+    return this.pokemon.types.map((type) => type.type.name.toLowerCase());
   }
-
-
+  
 
 }

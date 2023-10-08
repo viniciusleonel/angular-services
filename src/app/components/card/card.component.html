@@ -1,20 +1,32 @@
 
-<div class="card" [ngClass]="chooseClass()">
+<div class="container__title" [ngClass]="chooseClass()">
+    <h1 >Search Pokemon</h1>
+</div>
 
-    <input type="text" (input)="getPokemon($any($event.target).value)">
+<div class="container__input">
+    <input type="text" (input)="getPokemon($any($event.target).value)" [ngClass]="chooseClass()">
+</div>
+
+<div class="card" [ngClass]="chooseClass()">
 
     <div class="card__title">
         <h3>{{ pokemon.name }}</h3>
     </div>
 
     <div class="card__body" [ngClass]="chooseClass()">
-        <img [src]="pokemon.sprites.front_default" alt="pokemon">
+        <img [src]="pokemon.sprites.other.dream_world.front_default" alt="pokemon" height="200" width="200">
     </div>
     
     <div class="card__stats">
         <!-- Usando o NgFor para percorrer uma lista e coloca-la na variavel type  -->
         <span 
-        *ngFor="let t of pokemon.types" class="card__stats__type " [ngClass]="chooseClass()">{{ t.type.name }}</span>
+            *ngFor="let typeClass of getPokemonTypeClasses()"
+            class="card__stats__type"
+            [ngClass]="typeClass"
+        >{{ typeClass }}</span>
+        
     </div>
 
+    
+    
 </div>
