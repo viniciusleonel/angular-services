@@ -1,6 +1,7 @@
 .container__title {
     margin: 0 auto ;
     width: 250px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,13 +17,14 @@ h1 {
 }
 
 .container__input > input{
-
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    
     text-align: center;
     text-transform: capitalize;
     margin: 0 auto .5rem;
     width: 244px;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,9 +32,9 @@ h1 {
 
 .card {
     margin: 0 auto;
-    border: 1px solid black;
     width: 250px;
     height: 350px;
+    border: 1px solid black;
     border-radius: 10px;
 
     display: flex;
@@ -48,7 +50,6 @@ h1 {
 }
 
 .card__body {
-    /* background-color: #fa6c6c; */
     border-radius: 5px;
     width: 90%;
     height: 70%;
@@ -61,10 +62,12 @@ h1 {
 
 .card__stats{
     padding: 10px 0;
+    text-transform: capitalize;
+
     display: flex;
     flex-direction: row;
     justify-content: center;
-    text-transform: capitalize;
+    
 }
 
 .card__stats__type {

@@ -48,9 +48,7 @@ export class CardComponent implements OnInit{
           types: resp.types
         };
 
-        // Verifique se há pelo menos um tipo
         if (this.pokemon.types.length > 0) {
-          // Extrair o nome do primeiro tipo
           this.estiloType = this.pokemon.types[0].type.name;
           console.log('O primeiro tipo é:', this.estiloType);
         } else {
@@ -65,5 +63,4 @@ export class CardComponent implements OnInit{
     return this.pokemon.types.map((type) => type.type.name.toLowerCase());
   }
   
-
 }
