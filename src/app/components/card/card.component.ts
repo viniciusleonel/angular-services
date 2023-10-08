@@ -9,7 +9,9 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class CardComponent implements OnInit{
   pokemon:PokemonData
-  attributesTypes:string[] = ['Fire', 'Flying']
+
+  estilo:string = ""
+  estiloType:string = ""
 
   constructor (
     private service:PokemonService
@@ -17,13 +19,28 @@ export class CardComponent implements OnInit{
     this.pokemon = {
       id:0,
       name:'',
-      sprites:{other:{dream_world:{front_default:''}}},
+      sprites:{front_default:''},
       types:[]
     }
   }
 
   ngOnInit(): void {
-    this.service.getPokemon("pikachu").subscribe(
+    this.getPokemon('pikachu')
+  }
+
+  chooseClass(){
+    if (this.estiloType === 'fire' ){
+      this.estilo = 'fire'
+    } else { 
+      this.estilo = 'normal'
+    }
+
+    return this.estilo
+
+  }
+
+  getPokemon(searchName:string){
+    this.service.getPokemon(searchName).subscribe(
       {
         next: (resp) => {
           
@@ -31,14 +48,26 @@ export class CardComponent implements OnInit{
             id:resp.id,
             name:resp.name,
             sprites: resp.sprites,
-            types:resp.types
+            types:resp.types,
           }
           
         },
-        error: (err) => console.log(err)
+        error: (err) => console.log("not found"),
         
+
       }
     )
+    
   }
+
+  pickClass(){
+    // this.service.getPokemon("charizard").subscribe(
+    //   this.estiloType = this.pokemon.types.map((type:{name}))
+
+    // )
+    
+  }
+
+
 
 }

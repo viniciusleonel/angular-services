@@ -2,7 +2,7 @@
     border: 1px solid black;
     width: 250px;
     height: 350px;
-    background-color: #7d3636;
+    /* background-color: #7d3636; */
     border-radius: 10px;
 
     display: flex;
@@ -18,11 +18,15 @@
 }
 
 .card__body {
-    background-color: #fa6c6c;
+    /* background-color: #fa6c6c; */
     border-radius: 5px;
     width: 90%;
     height: 70%;
     margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .card__stats{
@@ -39,4 +43,12 @@
     border-radius: 5px;
     padding: 5px;
     margin-right: 5px;
+}
+
+.fire{
+    background-color: #f90f0fc9;
+}
+
+.normal{
+    background-color: #bebe9ac9;
 }
