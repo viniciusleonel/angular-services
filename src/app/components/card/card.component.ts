@@ -8,18 +8,18 @@ import { PokemonService } from 'src/app/services/pokemon.service';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit{
-  pokemon:PokemonData | any
+  pokemon:PokemonData
   attributesTypes:string[] = ['Fire', 'Flying']
 
   constructor (
     private service:PokemonService
   ){
-    // this.pokemon = {
-    //   id:0,
-    //   name:'',
-    //   sprites:{other:{dream_world:{front_default:''}}},
-    //   types:[]
-    // }
+    this.pokemon = {
+      id:0,
+      name:'',
+      sprites:{other:{dream_world:{front_default:''}}},
+      types:[]
+    }
   }
 
   ngOnInit(): void {
@@ -30,11 +30,9 @@ export class CardComponent implements OnInit{
           this.pokemon = {
             id:resp.id,
             name:resp.name,
-            sprites:resp.sprites.other.dream_world.front_default,
+            sprites: resp.sprites,
             types:resp.types
           }
-
-          console.log(this.pokemon.sprites);
           
         },
         error: (err) => console.log(err)
