@@ -3,6 +3,8 @@
 Este é um projeto Angular que utiliza a PokeAPI para buscar informações sobre Pokémon, como imagens, nomes e tipos. Ele exibe essas informações em componentes dinâmicos e aplica estilos diferentes com base nos tipos de Pokémon. 
 É uma demonstração do uso de componentes, serviços e observables no Angular para criar uma experiência interativa e visualmente atrativa relacionada a Pokémon.
 
+[Projeto](https://angular-services-viniciusleonel.vercel.app/)
+
 ![image](https://github.com/viniciusleonel/angular-services/assets/124933333/ded19ed8-a245-4e6d-a1a8-2a7d0a649e99)
 
 
